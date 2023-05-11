@@ -84,5 +84,5 @@ optional arguments:
 ```bash
 (venv) python entrypoint.py <source_file_path> <target_file_path>
 
-# e.g., >> python entrypoint.py source_file.csv target_file.csv --sep c --hashes ETag SHA-1
+# e.g., >> python entrypoint.py source_file.csv target_file.csv --sep c --hashe_types ETag SHA-1
 ```
