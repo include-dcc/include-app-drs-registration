@@ -61,7 +61,7 @@ AWS_SECRET_ACCESS_KEY=<PUT-AWS-SECRET-ACCESS-KEY>
 ```
 usage: entrypoint.py [-h] [--sep {t,c}]
                      [--cavatica_drs_api_url CAVATICA_DRS_API_URL]
-                     [--hashes {ETag,MD5,SHA-1} [{ETag,MD5,SHA-1} ...]]
+                     [--hashe_types {ETag,MD5,SHA-1} [{ETag,MD5,SHA-1} ...]]
                      source_file_path target_file_path
 
 positional arguments:
@@ -75,7 +75,7 @@ optional arguments:
   --cavatica_drs_api_url CAVATICA_DRS_API_URL
                         CAVATICA DRS API URL (default: https://cavatica-
                         api.sbgenomics.com/)
-  --hashes {ETag,MD5,SHA-1} [{ETag,MD5,SHA-1} ...]
+  --hashe_types {ETag,MD5,SHA-1} [{ETag,MD5,SHA-1} ...]
                         Hash types (default: ['ETag', 'MD5', 'SHA-1'])
 ```
 
