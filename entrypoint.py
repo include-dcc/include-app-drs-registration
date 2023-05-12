@@ -56,7 +56,7 @@ parser.add_argument(
     help="CAVATICA DRS API URL",
 )
 parser.add_argument(
-    "--hashe_types",
+    "--hash_types",
     nargs="+",
     default=["ETag", "MD5", "SHA-1"],
     choices=["ETag", "MD5", "SHA-1"],
@@ -71,7 +71,7 @@ source_file_path = args.source_file_path
 target_file_path = args.target_file_path
 sep = "\t" if args.target_file_path == "t" else ","
 cavatica_drs_api_url = args.cavatica_drs_api_url
-hashe_types = args.hashe_types
+hash_types = args.hash_types
 
 # Import in source file
 source_df = pd.read_csv(source_file_path, sep=sep)
@@ -91,7 +91,7 @@ for i, row in source_df.iterrows():
         "name": row["Key"].split("/")[-1],
         "size": row["Size"],
         "checksums": [
-            {"type": hash_type, "checksum": row[hash_type]} for hash_type in hashe_types
+            {"type": hash_type, "checksum": row[hash_type]} for hash_type in hash_types
         ],
         "locationUrls": [f"s3://{row['Bucket']}/{row['Key']}"],
     }
