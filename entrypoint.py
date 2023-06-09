@@ -91,7 +91,11 @@ for i, row in source_df.iterrows():
         "name": row["Key"].split("/")[-1],
         "size": row["Size"],
         "checksums": [
-            {"type": hash_type, "checksum": row[hash_type]} for hash_type in hash_types
+            {
+                "type": {"ETag": "ETAG"}.get(hash_type, hash_type),
+                "checksum": row[hash_type],
+            }
+            for hash_type in hash_types
         ],
         "locationUrls": [f"s3://{row['Bucket']}/{row['Key']}"],
     }
