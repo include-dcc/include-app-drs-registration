@@ -112,14 +112,16 @@ for i, row in source_df.iterrows():
     )
 
     # Cache generated DRS URI
+    drs_uri = None
     try:
         resp.raise_for_status()
         drs_uri = resp.json().get("drsUri")
-        access_url_list.append(drs_uri)
         success += 1
         pp.pprint(f"  🍱 Registered {data}; Access URL: {drs_uri}")
     except RequestException as e:
         pp.pprint(f"  ❌ Failed to register {data}: {e.response.text}")
+    finally:
+        access_url_list.append(drs_uri)
 
 # Export to target file
 target_df["Access URL"] = access_url_list
@@ -133,4 +135,6 @@ m, s = divmod(timedelta, 60)
 h, m = divmod(m, 60)
 logging.info(f"✅ Time elapsed: {h} hours {m} minutes {s} seconds")
 
-logging.info(f"🎉 {success} files have been registered to {cavatica_drs_api_url}!")
+logging.info(
+    f"🎉 {success} / {expects} files have been registered to {cavatica_drs_api_url}!"
+)
