@@ -204,4 +204,11 @@ The final step publishes the dataset. Send a HTTP POST request to `<BASE_URL>/<D
 }
 ```
 
+Corresponding CURL command for publishing: 
+
+	curl --location -g --request PATCH ‘https://cavatica-api.sbgenomics.com/v2/drs-internal/datasets/<dataset_id>/publish' 
+	--header 'X-SBG-Auth-Token: <token>' 
+	--header 'X-SBG-Advance-Access: advance'
+
+
 🎉 Tada! Now, the files are registed to the CAVATICA DRS server!
